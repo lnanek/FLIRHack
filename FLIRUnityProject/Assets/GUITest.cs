@@ -46,8 +46,13 @@ public class GUITest : MonoBehaviour {
 	IEnumerator load_image()
 	{
 		// get every file in chosen directory with the extension .jpg
-		//string[] filePaths = Directory.GetFiles(@"/Users/lnanek/Desktop/FLIRHack", "*.jpg"); 
-		string[] filePaths = Directory.GetFiles(Application.dataPath + "/../..", "*.jpg"); 
+
+		string pathForThermalImages = Application.dataPath + "/../..";
+		if (Application.platform == RuntimePlatform.Android) {
+			pathForThermalImages = "/sdcard/Pictures/";
+		}
+
+		string[] filePaths = Directory.GetFiles(pathForThermalImages, "FLIROne-*.jpg"); 
 
 		// "download" the first file from disk
 		WWW www = new WWW("file://" + filePaths[0]);                  

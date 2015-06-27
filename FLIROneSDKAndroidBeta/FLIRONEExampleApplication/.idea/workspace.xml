@@ -5,9 +5,6 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="7366a90c-014e-412c-9ff9-2d6e50430baf" name="Default" comment="" />
     <ignored path="FLIRONEExampleApplication.iws" />
@@ -53,6 +50,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../../android_signing_keystore.jks" />
+    <option name="KEY_ALIAS" value="android" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -1341,6 +1343,9 @@
     <property name="recentsLimit" value="5" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="ZX1G22KLP8" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="lollipop" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/../../" />
+    <property name="ExportApk.Flavors" value="" />
+    <property name="ExportApk.BuildType" value="release" />
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
