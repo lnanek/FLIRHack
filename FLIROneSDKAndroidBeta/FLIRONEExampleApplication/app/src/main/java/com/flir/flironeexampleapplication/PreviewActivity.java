@@ -528,18 +528,18 @@ public class PreviewActivity extends Activity implements Device.Delegate, FrameP
 
         // if nothing's connected, let's load an image instead?
 
-        if(flirOneDevice == null && lastSavedPath != null) {
+        //if(flirOneDevice == null && lastSavedPath != null) {
             // load!
-            File file = new File(lastSavedPath);
+        //    File file = new File(lastSavedPath);
 
 
-            Frame frame = new Frame(file);
+        //    Frame frame = new Frame(file);
 
             // load the frame
-            onFrameReceived(frame);
-        } else {
+        //    onFrameReceived(frame);
+        //} else {
             this.imageCaptureRequested = true;
-        }
+        //}
     }
     public void onConnectSimClicked(View v){
         if(flirOneDevice == null){
