@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.OrientationEventListener;
@@ -40,6 +41,8 @@ import com.flir.flironesdk.RenderedImage;
 import com.flir.flironesdk.SimulatedDevice;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -103,6 +106,10 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
             onConnectSimClicked(null);
         }
 
+        // Fake pressing image capture button
+
+        imageCaptureRequested = true;
+
     }
 
     @Override
@@ -132,6 +139,8 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
     private FrameProcessor frameProcessor;
 
     private String lastSavedPath;
+
+    final File outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
     private Device.TuningState currentTuningState = Device.TuningState.Unknown;
     // Device Delegate methods
@@ -191,7 +200,7 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
     private void updateThermalImageView(final Bitmap frame){
         Log.d(LOG_TAG, "updateThermalImageView");
 
-        imageCaptureRequested = true;
+        //imageCaptureRequested = true;
     }
 
     // StreamDelegate method
@@ -347,36 +356,42 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
             /*
                     Capture this image if requested.
                     */
-            if (this.imageCaptureRequested) {
+            if (this.imageCaptureRequested && null != thermalBitmap) {
                 imageCaptureRequested = false;
                 final Context context = this;
                 new Thread(new Runnable() {
                     public void run() {
-                        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ssZ", Locale.getDefault());
-                        String formatedDate = sdf.format(new Date());
-                        String fileName = "FLIROne-" + formatedDate + ".jpg";
                         try{
+
+                            // Save to temp file
+                            final File outputFile = File.createTempFile("temp-flir-saving", ".jpg", outputDir);
+                            final OutputStream outputStream = new FileOutputStream(outputFile);
+
+                            thermalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+
+                            // XXX gives invalid image
+                            //renderedImage.getFrame().save(outputStream, RenderedImage.Palette.Iron);
+
+                            // XXX buggy, leaves file locked/in-use
+                            //renderedImage.getFrame().save(outputFile.getPath(), RenderedImage.Palette.Iron, RenderedImage.ImageType.BlendedMSXRGBA8888Image);
+
+                            outputStream.close();
+
+                            // Rename to file name format Unity looks for
+                            String path = outputDir.toString();
+                            String fileName = "FLIROne-" + lPadZero(SystemClock.elapsedRealtimeNanos(), 19) + ".jpg";
                             lastSavedPath = path+ "/" + fileName;
-                            renderedImage.getFrame().save(lastSavedPath, RenderedImage.Palette.Iron, RenderedImage.ImageType.BlendedMSXRGBA8888Image);
+                            final File finalOutputFile = new File(lastSavedPath);
+                            finalOutputFile.delete();
+                            outputFile.renameTo(finalOutputFile);
 
                             Log.d(LOG_TAG, "***Lance*** thermal image saved to path: " + lastSavedPath);
                             //Toast.makeText(BackgroundService.this, "Saved to: " + lastSavedPath, Toast.LENGTH_LONG).show();
 
-                            /*
-                            MediaScannerConnection.scanFile(context,
-                                    new String[]{path + "/" + fileName}, null,
-                                    new MediaScannerConnection.OnScanCompletedListener() {
-                                        @Override
-                                        public void onScanCompleted(String path, Uri uri) {
-                                            Log.i(LOG_TAG, "Scanned " + path + ":");
-                                            Log.i(LOG_TAG, "-> uri=" + uri);
-                                        }
+                            imageCaptureRequested = true;
 
-                                    });
-*/
                         }catch (Exception e){
-                            e.printStackTrace();
+                            Log.e(LOG_TAG, "Error saving frame", e);
                         }
                     }
                 }).start();
@@ -384,48 +399,50 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);
             Log.d(LOG_TAG, "Duration: "+(duration/1000000)+"ms");
-            if (streamSocket != null && streamSocket.isConnected()){
-                try {
-                    // send PNG file over socket in another thread
-                    final OutputStream outputStream = streamSocket.getOutputStream();
-                    // make a output stream so we can get the size of the PNG
-                    final ByteArrayOutputStream bufferStream = new ByteArrayOutputStream();
-
-                    thermalBitmap.compress(Bitmap.CompressFormat.WEBP, 100, bufferStream);
-                    bufferStream.flush();
-                    (new Thread() {
-                        @Override
-                        public void run() {
-                            super.run();
-                            try {
-                            /*
-                             * Header is 6 bytes indicating the length of the image data and rotation
-                             * of the device
-                             * This could be expanded upon by adding bytes to have more metadata
-                             * such as image format
-                             */
-                                byte[] headerBytes = ByteBuffer.allocate((Integer.SIZE + Short.SIZE) / 8).putInt(bufferStream.size()).putShort((short)deviceRotation).array();
-                                synchronized (streamSocket) {
-                                    outputStream.write(headerBytes);
-                                    bufferStream.writeTo(outputStream);
-                                    outputStream.flush();
-                                }
-                                bufferStream.close();
-
-
-                            } catch (IOException ex) {
-                                Log.e(LOG_TAG, "Error sending frame: " + ex.toString());
-                            }
-                        }
-                    }).start();
-                } catch (Exception ex){
-                    Log.e(LOG_TAG, "Error creating PNG: "+ex.getMessage());
-
-                }
-
-            }
 
         }
+    }
+
+    /**
+     * @param in The long value
+     * @param fill The number of digits to fill
+     * @return The given value left padded with the given number of digits
+     */
+    public static String lPadZero(long in, int fill){
+
+        boolean negative = false;
+        long value, len = 0;
+
+        if(in >= 0){
+            value = in;
+        } else {
+            negative = true;
+            value = - in;
+            in = - in;
+            len ++;
+        }
+
+        if(value == 0){
+            len = 1;
+        } else{
+            for(; value != 0; len ++){
+                value /= 10;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if(negative){
+            sb.append('-');
+        }
+
+        for(int i = fill; i > len; i--){
+            sb.append('0');
+        }
+
+        sb.append(in);
+
+        return sb.toString();
     }
 
     public void onTuneClicked(View v){

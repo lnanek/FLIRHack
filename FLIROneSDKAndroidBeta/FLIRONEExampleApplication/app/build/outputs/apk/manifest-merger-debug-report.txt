@@ -71,14 +71,18 @@ service#com.flir.flironeexampleapplication.BackgroundService
 ADDED from AndroidManifest.xml:36:9
 	android:name
 		ADDED from AndroidManifest.xml:36:18
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:40:5
 	android:name
 		ADDED from AndroidManifest.xml:40:22
-uses-permission#android.permission.INTERNET
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:41:5
 	android:name
 		ADDED from AndroidManifest.xml:41:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:42:5
+	android:name
+		ADDED from AndroidManifest.xml:42:22
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from :flironesdk::7:5

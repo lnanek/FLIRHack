@@ -6,23 +6,39 @@ using System;
 
 public class GUITest : MonoBehaviour {
 
-	public Texture aTexture;
+	private Texture2D displayingTexture ;
+	
+	private Texture2D loadingTexture;
 
-	string lastLoadedFilePath = null;
+	private string lastLoadedFilePath = null;
 
-	bool isLoading;
+	private bool isLoading;
+
+	private bool isFirstLoaded = false;
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log("Start");
 
+		displayingTexture = new Texture2D(512, 512);  
+		loadingTexture = new Texture2D(512, 512);  
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log("Update");
 
+		// If we're not loading a texture
 		if (!isLoading) {
+
+			// If a texture has been loaded, swap texture we are loading into and texture we are displaying
+			if (isFirstLoaded) {
+				Texture2D previousDisplayTexture = displayingTexture;
+				displayingTexture = loadingTexture;
+				loadingTexture = previousDisplayTexture;
+			}
+
+			// Start loading a texture
 			isLoading = true;
 			StartCoroutine("load_image");
 		}	
@@ -31,16 +47,16 @@ public class GUITest : MonoBehaviour {
 	void OnGUI () {
 		//Debug.Log("OnGUI");
 
-		if (!aTexture) {
-			Debug.LogError("No Texture found.");
+		if (!isFirstLoaded) {
+			Debug.LogError("No Texture loaded yet.");
 		} else {
 
-			float left = (Screen.width - aTexture.width) / 2;
-			float top = (Screen.height - aTexture.height) / 2;
-			Rect centered = new Rect(left, top, aTexture.width, aTexture.height);
+			float left = (Screen.width - displayingTexture.width) / 2;
+			float top = (Screen.height - displayingTexture.height) / 2;
+			Rect centered = new Rect(left, top, displayingTexture.width, displayingTexture.height);
 
 			float imageAspect = 0F; // Preserve aspect ratio
-			GUI.DrawTexture(centered, aTexture, ScaleMode.ScaleToFit, true, imageAspect);
+			GUI.DrawTexture(centered, displayingTexture, ScaleMode.ScaleToFit, true, imageAspect);
 		}
 
 		// Make a background box
@@ -109,22 +125,13 @@ public class GUITest : MonoBehaviour {
 		// Wait unill its loaded
 		yield return www;                                                               
 
-		// create a new Texture2D (you could use a gloabaly defined array of Texture2D )
-		Texture2D new_texture = new Texture2D(512,512);              
-
-		// put the downloaded image file into the new Texture2D
-		www.LoadImageIntoTexture(new_texture);                     
-
-		// put the new image into the current material as defuse material for testing.
-		//this.renderer.material.mainTexture = new_texture;           
-
-		aTexture = new_texture;
+		// put the downloaded image file into the Texture2D
+		www.LoadImageIntoTexture(loadingTexture);                     
 
 		lastLoadedFilePath = newestFilePath;
 
-		//load_image_after(1.0F);
-
 		isLoading = false;
+		isFirstLoaded = true;
 	}
 
 }
