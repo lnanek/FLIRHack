@@ -13,14 +13,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onBackgroundClicked"
-        android:text="Start Background Capture"
+        android:text="Background Capture"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBackgroundSimulatedClicked"
+        android:text="Background Simulated Capture"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onStopBackgroundClicked"
+        android:text="Stop Background"
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onForegroundClicked"
-        android:text="Start Android Demo" />
+        android:text="Foreground Demo" />
 
 
 </LinearLayout>

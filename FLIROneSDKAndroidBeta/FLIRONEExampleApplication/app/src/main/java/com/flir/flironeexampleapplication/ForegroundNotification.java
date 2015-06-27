@@ -17,7 +17,7 @@ public class ForegroundNotification {
     private static Notification notification;
 
     public static synchronized Notification show(final Context context) {
-        if ( null == notification ) {
+        if (null == notification) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                     .setContentTitle("FLIR SDK")
                     .setContentText("Streaming thermal images")
@@ -30,6 +30,11 @@ public class ForegroundNotification {
         NotificationManager notifications = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notifications.notify(NOTIFICATION_ID, notification);
         return notification;
+    }
+
+    public static synchronized void hide(final Context context) {
+        NotificationManager notifications = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notifications.cancelAll();
     }
 
 }

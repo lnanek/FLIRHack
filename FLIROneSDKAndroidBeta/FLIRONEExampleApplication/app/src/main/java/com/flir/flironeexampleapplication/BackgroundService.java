@@ -55,11 +55,7 @@ import java.util.Locale;
  */
 public class BackgroundService extends Service implements Device.Delegate, FrameProcessor.Delegate, Device.StreamDelegate, Device.PowerUpdateDelegate {
 
-    // TODO runtime simulation on/off option
-
     // TODO delete older image so don't fill SD card?
-
-    private static final boolean SIMULATE = true;
 
     private static final String LOG_TAG = BackgroundService.class.getSimpleName();
 
@@ -103,7 +99,7 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
 
         // Fake pressing simulate button
 
-        if (SIMULATE) {
+        if (MainActivity.getSimulatePref(this)) {
             onConnectSimClicked(null);
         }
 
@@ -457,6 +453,8 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
     }
     public void onConnectSimClicked(View v){
         if(flirOneDevice == null){
+            Log.d(LOG_TAG, "Starting simulation");
+
             try {
                 flirOneDevice = new SimulatedDevice(this, getResources().openRawResource(R.raw.sampleframes), 10);
                 flirOneDevice.setPowerUpdateDelegate(this);
@@ -467,6 +465,9 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
                 ex.printStackTrace();
             }
         }else if(flirOneDevice instanceof SimulatedDevice) {
+
+            Log.d(LOG_TAG, "Stopping simulation");
+
             flirOneDevice.close();
             flirOneDevice = null;
         }
