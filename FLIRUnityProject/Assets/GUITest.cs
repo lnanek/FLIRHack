@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GUITest : MonoBehaviour {
 
+	public Texture aTexture;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,6 +16,15 @@ public class GUITest : MonoBehaviour {
 	}
 	
 	void OnGUI () {
+
+		if (!aTexture) {
+			Debug.LogError("Assign a Texture in the inspector.");
+			return;
+		}
+		GUI.DrawTexture(new Rect(10, 10, 300, 400), aTexture, ScaleMode.ScaleToFit, true, 10.0F);
+
+
+
 		// Make a background box
 		GUI.Box(new Rect(10,10,100,90), "Loader Menu");
 		
