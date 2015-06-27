@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="flironesdk-">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/flironesdk/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/flironesdk/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

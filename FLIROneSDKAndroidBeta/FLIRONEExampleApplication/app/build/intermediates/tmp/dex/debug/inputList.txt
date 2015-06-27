@@ -1,0 +1,6 @@
+/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/classes/debug
+/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-9b01276b2620f29c95d036546db715f7b2898e3b.jar
+/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-a5eca187efe8d02a1c0a377c8a124f689bb39bb1.jar
+/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-beb278cf0790f7ae1048315ff391f8396a7e8d1d.jar
+/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-fb8861c732f620782f242b6e5faecc7be534c40f.jar
+/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-bd766abc2051d189bfa44008a917440163d2cb4d.jar
