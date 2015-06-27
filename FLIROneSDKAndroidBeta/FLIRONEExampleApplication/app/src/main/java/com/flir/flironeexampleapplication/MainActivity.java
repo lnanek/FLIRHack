@@ -11,7 +11,7 @@ import android.view.View;
 
 /**
  * Offers options for running FLIR One in background or foreground.
- * 
+ *
  * Created by lnanek on 6/27/15.
  */
 public class MainActivity extends Activity {

@@ -363,6 +363,7 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
                             Log.d(LOG_TAG, "***Lance*** thermal image saved to path: " + lastSavedPath);
                             //Toast.makeText(BackgroundService.this, "Saved to: " + lastSavedPath, Toast.LENGTH_LONG).show();
 
+                            /*
                             MediaScannerConnection.scanFile(context,
                                     new String[]{path + "/" + fileName}, null,
                                     new MediaScannerConnection.OnScanCompletedListener() {
@@ -373,7 +374,7 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
                                         }
 
                                     });
-
+*/
                         }catch (Exception e){
                             e.printStackTrace();
                         }

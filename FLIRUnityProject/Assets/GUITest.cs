@@ -87,6 +87,14 @@ public class GUITest : MonoBehaviour {
 		Array.Reverse(filePaths);
 		string newestFilePath = filePaths[0];
 
+		// Delete older files
+		if (filePaths.Length > 1) {
+			for(int i = 1; i < filePaths.Length; i++) {
+				File.Delete(filePaths[i]);
+			}
+		}
+
+		// If we already loaded the image, ignore it
 		if ( null != lastLoadedFilePath ) {
 			if ( 0 == String.Compare(lastLoadedFilePath, newestFilePath) ) {
 				Debug.Log("newest file is same as last loaded, stopping");

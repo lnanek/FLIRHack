@@ -442,9 +442,10 @@ int layout abc_screen_toolbar 0x7f040013
 int layout abc_search_dropdown_item_icons_2line 0x7f040014
 int layout abc_search_view 0x7f040015
 int layout abc_simple_dropdown_hint 0x7f040016
-int layout activity_preview 0x7f040017
-int layout emptytextview 0x7f040018
-int layout support_simple_spinner_dropdown_item 0x7f040019
+int layout activity_main 0x7f040017
+int layout activity_preview 0x7f040018
+int layout emptytextview 0x7f040019
+int layout support_simple_spinner_dropdown_item 0x7f04001a
 int mipmap ic_launcher 0x7f030000
 int raw default_camera_files 0x7f070000
 int raw sampleframes 0x7f070001

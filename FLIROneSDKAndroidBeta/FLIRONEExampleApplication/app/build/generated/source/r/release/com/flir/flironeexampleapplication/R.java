@@ -1420,9 +1420,10 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f040014;
         public static final int abc_search_view=0x7f040015;
         public static final int abc_simple_dropdown_hint=0x7f040016;
-        public static final int activity_preview=0x7f040017;
-        public static final int emptytextview=0x7f040018;
-        public static final int support_simple_spinner_dropdown_item=0x7f040019;
+        public static final int activity_main=0x7f040017;
+        public static final int activity_preview=0x7f040018;
+        public static final int emptytextview=0x7f040019;
+        public static final int support_simple_spinner_dropdown_item=0x7f04001a;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
