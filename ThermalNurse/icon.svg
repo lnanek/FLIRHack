@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg1329"
+   sodipodi:docname="red-cross.svg"
+   viewBox="0 0 617.12 617.16"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.48.5 r10040"
+   width="100%"
+   height="100%">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="0"
+     pagecolor="#ffffff"
+     inkscape:window-height="755"
+     inkscape:zoom="0.35"
+     inkscape:window-x="0"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="595.49074"
+     inkscape:cy="613.26018"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     fill="#ff0000"
+     inkscape:window-maximized="0" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-71.438 -68.062)">
+    <path
+       id="rect1337"
+       style="fill-rule:evenodd;stroke-width:0;fill:#0000ff"
+       d="m275.72 68.062v204.32h-204.28l-0.002 208.56h204.28v204.28h208.56v-204.28h204.28v-208.56h-204.28v-204.32l-208.56 0.002z" />
+    <path
+       d="m 561.59418,-222.86193 v 204.320011 h -204.28 l -0.002,208.559999 h 204.28 v 204.28 h 208.56003 v -204.28 h 204.28 V -18.541919 h -204.28 V -222.86193 l -208.56003,0.002 z"
+       style="fill:#ff7f2a;fill-rule:evenodd;stroke-width:0"
+       id="path2985"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2987"
+       style="fill:#ff0000;fill-rule:evenodd;stroke-width:0"
+       d="m 847.46641,-513.78589 v 204.32001 h -204.28 l 0,208.56 h 204.28 v 204.28 h 208.55999 v -204.28 h 204.28 v -208.56 h -204.28 v -204.32001 l -208.55999,0.002 z" />
+  </g>
+  <metadata
+     id="metadata6">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2010-04-08T20:40:21</dc:date>
+        <dc:description />
+        <dc:source>https://openclipart.org/detail/40351/first-aid-by-mightyman</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>mightyman</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>first aid</rdf:li>
+            <rdf:li>plus</rdf:li>
+            <rdf:li>plus sign</rdf:li>
+            <rdf:li>red cross</rdf:li>
+            <rdf:li>red plus</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

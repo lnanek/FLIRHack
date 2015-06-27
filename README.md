@@ -20,4 +20,10 @@ adb install UnityAndroidApp.apk
   
 7) Thermal images are displayed as loaded
   
+****
   
+WiFi:
+ihangar hack
+summer2015
+
+Demo: 2PM Sunday
