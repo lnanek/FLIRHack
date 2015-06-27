@@ -19,31 +19,35 @@ public class GUITest : MonoBehaviour {
 	void OnGUI () {
 
 		if (!aTexture) {
-			Debug.LogError("Assign a Texture in the inspector.");
-			return;
+			Debug.LogError("No Texture found.");
+		} else {
+
+			float left = (Screen.width - aTexture.width) / 2;
+			float top = (Screen.height - aTexture.height) / 2;
+			Rect centered = new Rect(left, top, aTexture.width, aTexture.height);
+
+			float imageAspect = 0F; // Preserve aspect ratio
+			GUI.DrawTexture(centered, aTexture, ScaleMode.ScaleToFit, true, imageAspect);
 		}
-		GUI.DrawTexture(new Rect(10, 10, 300, 300), aTexture, ScaleMode.ScaleToFit, true, 10.0F);
-
-
 
 		// Make a background box
-		GUI.Box(new Rect(10,10,100,90), "Loader Menu");
+		GUI.Box(new Rect(10,10,100,90), "Test Label");
 		
-		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-		if(GUI.Button(new Rect(20,40,80,20), "Level 1")) {
-			Application.LoadLevel(1);
+		if(GUI.Button(new Rect(20,40,80,20), "Button 1")) {
+			Debug.Log("Button 1 Pressed");
 		}
 		
 		// Make the second button.
-		if(GUI.Button(new Rect(20,70,80,20), "Level 2")) {
-			Application.LoadLevel(2);
+		if(GUI.Button(new Rect(20,70,80,20), "Button 2")) {
+			Debug.Log("Button 2 Pressed");
 		}
 	}
 
 	IEnumerator load_image()
 	{
 		// get every file in chosen directory with the extension .jpg
-		string[] filePaths = Directory.GetFiles(@"/Users/lnanek/Desktop/FLIRHack", "*.jpg"); 
+		//string[] filePaths = Directory.GetFiles(@"/Users/lnanek/Desktop/FLIRHack", "*.jpg"); 
+		string[] filePaths = Directory.GetFiles(Application.dataPath + "/../..", "*.jpg"); 
 
 		// "download" the first file from disk
 		WWW www = new WWW("file://" + filePaths[0]);                  
