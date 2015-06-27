@@ -1,6 +1,0 @@
-/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/classes/release
-/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/release/support-annotations-21.0.3-9b01276b2620f29c95d036546db715f7b2898e3b.jar
-/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/release/classes-1e7c5d1ea5a3e34d17c1935ccc127eed6f883fe6.jar
-/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-71f9bd929652d8cbffaefd677c9d02036615ee0a.jar
-/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/release/classes-d294f5ee2fd36e6149b9267d17e0cdd9611cb231.jar
-/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/release/classes-0a02e5108bac8ed023a71ed62e2ea4cc06d2a86c.jar
