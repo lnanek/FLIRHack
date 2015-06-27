@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -22,10 +22,10 @@
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="black_overlay">#66000000</color>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -159,7 +159,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">FLIR ONE Example Application</string>
     <string name="battery_label">Batt:</string>
@@ -172,12 +172,12 @@
     <string name="startNetStream">Stream</string>
     <string name="stopNetStream">Disconnect</string>
     <string name="txtTuning">Tuning...</string>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -931,7 +931,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ButtonBar">
         <item name="android:paddingLeft">2dp</item>
@@ -947,7 +947,7 @@
         <item name="metaButtonBarStyle">@style/ButtonBar</item>
         <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
     </style>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

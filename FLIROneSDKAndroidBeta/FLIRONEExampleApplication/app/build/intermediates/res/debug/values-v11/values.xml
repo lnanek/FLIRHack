@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v11/values.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v11/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat.Inverse">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
@@ -168,7 +168,7 @@
         <item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
         <item name="android:popupBackground">@drawable/abc_popup_background_mtrl_mult</item>
     </style>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/src/main/res/values-v11/styles.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/src/main/res/values-v11/styles.xml -->
     <eat-comment/>
     <style name="FullscreenActionBarStyle" parent="android:Widget.Holo.ActionBar">
         <item name="android:background">@color/black_overlay</item>
@@ -180,7 +180,7 @@
         <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
     </style>
-    <!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v11/values.xml -->
+    <!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v11/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme.Holo">
         <item name="android:windowNoTitle">true</item>

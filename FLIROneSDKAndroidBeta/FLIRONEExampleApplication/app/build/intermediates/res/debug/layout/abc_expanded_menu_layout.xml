@@ -20,4 +20,4 @@
         android:layout_width="?attr/panelMenuListWidth"
         android:layout_height="wrap_content"
         android:background="?attr/panelBackground"/>
-<!-- From: file:/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_expanded_menu_layout.xml -->
+<!-- From: file:/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_expanded_menu_layout.xml -->

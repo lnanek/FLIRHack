@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.flir.flironesdk.Device;
@@ -62,9 +63,13 @@ import java.util.Locale;
  * @see com.flir.flironesdk.Device.PowerUpdateDelegate
  */
 public class PreviewActivity extends Activity implements Device.Delegate, FrameProcessor.Delegate, Device.StreamDelegate, Device.PowerUpdateDelegate{
+
+    private static final String LOG_TAG = PreviewActivity.class.getSimpleName();
+
     static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
     static final String ACTION_USB_DISCONNECT = "android.hardware.usb.action.USB_DEVICE_DETACHED";
     static final String ACTION_USB_CONNECT = "android.hardware.usb.action.USB_DEVICE_ATTACHED";
+
     ImageView thermalImageView;
     private volatile boolean imageCaptureRequested = false;
     private volatile Socket streamSocket = null;
@@ -403,6 +408,9 @@ public class PreviewActivity extends Activity implements Device.Delegate, FrameP
                         try{
                             lastSavedPath = path+ "/" + fileName;
                             renderedImage.getFrame().save(lastSavedPath, RenderedImage.Palette.Iron, RenderedImage.ImageType.BlendedMSXRGBA8888Image);
+
+                            Log.d(LOG_TAG, "***Lance*** thermal image saved to path: " + lastSavedPath);
+                            Toast.makeText(PreviewActivity.this, "Saved to: " + lastSavedPath, Toast.LENGTH_LONG).show();
 
                             MediaScannerConnection.scanFile(context,
                                     new String[]{path + "/" + fileName}, null,
