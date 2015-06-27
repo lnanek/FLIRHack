@@ -1,22 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Linq;
+using System;
 
 public class GUITest : MonoBehaviour {
 
 	public Texture aTexture;
 
+	string lastLoadedFilePath = null;
+
+	bool isLoading;
+
 	// Use this for initialization
 	void Start () {
-		StartCoroutine("load_image");
+		Debug.Log("Start");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//Debug.Log("Update");
+
+		if (!isLoading) {
+			isLoading = true;
+			StartCoroutine("load_image");
+		}	
 	}
 	
 	void OnGUI () {
+		//Debug.Log("OnGUI");
 
 		if (!aTexture) {
 			Debug.LogError("No Texture found.");
@@ -43,8 +56,18 @@ public class GUITest : MonoBehaviour {
 		}
 	}
 
+	IEnumerator load_image_after(float waitTime) {
+		Debug.Log("load_image_after");
+
+		yield return new WaitForSeconds(waitTime);
+
+		StartCoroutine("load_image");
+	}
+
 	IEnumerator load_image()
 	{
+		Debug.Log("load_image");
+
 		// get every file in chosen directory with the extension .jpg
 
 		string pathForThermalImages = Application.dataPath + "/../..";
@@ -53,9 +76,27 @@ public class GUITest : MonoBehaviour {
 		}
 
 		string[] filePaths = Directory.GetFiles(pathForThermalImages, "FLIROne-*.jpg"); 
+		if (filePaths.Length == 0) {
+			Debug.Log("no FLIR files found");
+			isLoading = false;
+			yield return null;
+		}
 
+		// Read the newest file
+		Array.Sort(filePaths);
+		Array.Reverse(filePaths);
+		string newestFilePath = filePaths[0];
+
+		if ( null != lastLoadedFilePath ) {
+			if ( 0 == String.Compare(lastLoadedFilePath, newestFilePath) ) {
+				Debug.Log("newest file is same as last loaded, stopping");
+				isLoading = false;
+				yield return null;
+			}
+		}
+		
 		// "download" the first file from disk
-		WWW www = new WWW("file://" + filePaths[0]);                  
+		WWW www = new WWW("file://" + newestFilePath);                  
 
 		// Wait unill its loaded
 		yield return www;                                                               
@@ -70,6 +111,12 @@ public class GUITest : MonoBehaviour {
 		//this.renderer.material.mainTexture = new_texture;           
 
 		aTexture = new_texture;
+
+		lastLoadedFilePath = newestFilePath;
+
+		//load_image_after(1.0F);
+
+		isLoading = false;
 	}
 
 }
