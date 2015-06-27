@@ -9,17 +9,15 @@ adb install FLIRSDKDemo.apk
   
 2) Start FLIR One Example app  
   
-3) Click start foreground button  
+3a) Attach FLIR One, press power button, wait to blink green. Click BACKGROUND CAPTIRE button. Press OK on USB access dialog.
+
+3b) Alternatively, click BACKGROUND SIMULATED CAPTURE button to fake frames without a device.
   
-3) Press Simulation mode button in lower right corner if you do not have a FLIR One and want to use fake data.
-  
-4) Press camera button in middle center to save a thermal picture.
-  
-5) Install Unity app. So far this simply loads the thermal image into a texture and shows it on the screen.  
+5) Install Unity app.
 adb install UnityAndroidApp.apk    
   
 6) Run Unity App  
   
-7) Thermal image is displayed  
+7) Thermal images are displayed as loaded
   
   
