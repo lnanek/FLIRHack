@@ -62,10 +62,16 @@
     </FrameLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Diagnosis:"
+        android:textColor="#FFFFFF" />
+
+    <TextView
         android:id="@+id/diagnosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Diagnosis: possible tumor vascularization/infection! Have doctor check it out!"
+        tools:text="possible tumor vascularization/infection! Have doctor check it out!"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>

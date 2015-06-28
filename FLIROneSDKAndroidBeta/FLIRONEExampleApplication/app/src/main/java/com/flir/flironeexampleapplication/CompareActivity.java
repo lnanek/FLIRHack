@@ -25,7 +25,7 @@ import java.nio.ByteOrder;
 public class CompareActivity extends Activity {
 
     private static interface OnTempReadListener {
-        void onTemp(final int tempInC);
+        void onTemp(final Integer tempInC);
     }
 
     private static final String LOG_TAG = CompareActivity.class.getSimpleName();
@@ -38,13 +38,37 @@ public class CompareActivity extends Activity {
 
     private CrosshairView itemBCrosshairs;
 
+    private Integer itemATempInC;
+
+    private Integer itemBTempInC;
+
     private TextView tempText;
 
     private TextView diagnosisText;
 
-    private Integer itemATempInC;
+    private SavedDisplay itemADisplay;
 
-    private Integer itemBTempInC;
+    private SavedDisplay itemBDisplay;
+
+    private Bitmap itemAPreviewBitmap;
+
+    private Bitmap itemBPreviewBitmap;
+
+    private OnTempReadListener itemATempListener = new OnTempReadListener() {
+        @Override
+        public void onTemp(final Integer tempInC) {
+            itemATempInC = tempInC;
+            updateText();
+        }
+    };
+
+    private OnTempReadListener itemBTempListener = new OnTempReadListener() {
+        @Override
+        public void onTemp(final Integer tempInC) {
+            itemBTempInC = tempInC;
+            updateText();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,23 +92,48 @@ public class CompareActivity extends Activity {
 
         // TODO pick compare indexes in a list
         final int itemAIndex = 0;
+        itemADisplay = ThermalNurseApp.INSTANCE.displays.get(itemAIndex);
+        itemAPreviewBitmap = BitmapFactory.decodeFile(itemADisplay.savedFrame);
+
         final int itemBIndex = ThermalNurseApp.INSTANCE.displays.size() > 1 ? 1 : 0;
+        itemBDisplay = ThermalNurseApp.INSTANCE.displays.get(itemBIndex);
+        itemBPreviewBitmap = BitmapFactory.decodeFile(itemBDisplay.savedFrame);
 
-        setupItem(itemAIndex, itemAPreviewImage, itemACrosshairs, new OnTempReadListener() {
+        // To help comparisons, when crosshairs A is dragged, move both
+        // When B is dragged, move only B, giving user option of linked and non-linked movement.
+        final View.OnTouchListener linkedDrag = new View.OnTouchListener() {
             @Override
-            public void onTemp(final int tempInC) {
-                itemATempInC = tempInC;
-                updateText();
-            }
-        });
-        setupItem(itemBIndex, itemBPreviewImage, itemBCrosshairs, new OnTempReadListener() {
-            @Override
-            public void onTemp(final int tempInC) {
-                itemBTempInC = tempInC;
-                updateText();
-            }
-        });
+            public boolean onTouch(final View v, final MotionEvent event) {
+                Log.d(LOG_TAG, "linkedDrag onTouch x,y = " + event.getX() + "," + event.getY());
 
+                if (!itemBCrosshairs.hasLocation()) {
+                    updateSelectionCoordinates((int) event.getX(), (int) event.getY(),
+                            itemBCrosshairs, itemBPreviewBitmap, itemBDisplay, itemBTempListener);
+                    return true;
+                }
+
+                if (!itemACrosshairs.hasLocation()) {
+                    return true;
+                }
+
+                final float deltaX = event.getX() - itemACrosshairs.getLocationX();
+                final float deltaY = event.getY() - itemACrosshairs.getLocationY();
+                Log.d(LOG_TAG, "crosshair a moved = " + deltaX + "," + deltaY);
+
+                final float newBX = itemBCrosshairs.getLocationX() + deltaX;
+                final float newBY = itemBCrosshairs.getLocationY() + deltaY;
+
+                updateSelectionCoordinates((int) newBX, (int) newBY,
+                        itemBCrosshairs, itemBPreviewBitmap, itemBDisplay, itemBTempListener);
+
+                return false;
+            }
+        };
+
+        setupItem(itemADisplay, itemAPreviewBitmap, itemAPreviewImage,
+                itemACrosshairs, itemATempListener, linkedDrag);
+        setupItem(itemBDisplay, itemBPreviewBitmap, itemBPreviewImage,
+                itemBCrosshairs, itemBTempListener, null);
     }
 
     private void updateText() {
@@ -96,11 +145,11 @@ public class CompareActivity extends Activity {
             tempText.setText(displayString);
 
             if (tempDifference > 5) {
-                diagnosisText.setText("Diagnosis: possible tumor blood flow or infection. Check with Doctor!");
+                diagnosisText.setText("possible tumor blood flow or infection. See Doctor!");
             } else if (tempDifference < -5) {
-                diagnosisText.setText("Diagnosis: possible poor blood flow or calcification. Check with Doctor!");
+                diagnosisText.setText("possible poor blood flow or calcification. See Doctor!");
             } else {
-                diagnosisText.setText("Diagnosis: situation normal!");
+                diagnosisText.setText("situation normal!");
             }
 
         } else if ( null != itemATempInC ) {
@@ -115,41 +164,54 @@ public class CompareActivity extends Activity {
         }
     }
 
-    private void setupItem(final int displayIndex,
+    private void setupItem(final SavedDisplay display,
+                           final Bitmap previewBitmap,
                            final ImageView imageView,
                            final CrosshairView crosshairs,
-                           final OnTempReadListener tempListener) {
-
-        final SavedDisplay display = ThermalNurseApp.INSTANCE.displays.get(displayIndex);
+                           final OnTempReadListener tempListener,
+                           final View.OnTouchListener extraOnTouchListener) {
 
         Log.d(LOG_TAG, "renderedImage width,height = " + display.renderedImage.width() + "," + display.renderedImage.height());
-
-        final Bitmap previewBitmap = BitmapFactory.decodeFile(display.savedFrame);
 
         imageView.setImageBitmap(previewBitmap);
 
         crosshairs.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.d(LOG_TAG, "onTouch x,y = " + event.getX() + "," + event.getY());
+                Log.d(LOG_TAG, "setupItem onTouch x,y = " + event.getX() + "," + event.getY());
 
-                crosshairs.setLocation(event.getX(), event.getY());
-                crosshairs.invalidate();
+                if (null != extraOnTouchListener) {
+                    extraOnTouchListener.onTouch(v, event);
+                }
 
-                final int horizontalPadding = (crosshairs.getWidth() - previewBitmap.getWidth()) / 2;
-                final int verticalPadding = (crosshairs.getHeight() - previewBitmap.getHeight()) / 2;
-
-                final int imageX = (int) event.getX() - horizontalPadding;
-                final int imageY = (int) event.getY() - verticalPadding;
-
-                final Integer tempInC = getTempAt(CompareActivity.this, display.renderedImage, imageX, imageY);
-                Log.d(LOG_TAG, "temp is: " + tempInC);
-                tempListener.onTemp(tempInC);
+                updateSelectionCoordinates((int) event.getX(), (int) event.getY(),
+                        crosshairs, previewBitmap, display, tempListener);
 
                 return true;
             }
         });
 
+    }
+
+    private void updateSelectionCoordinates(final int newX, final int newY,
+                                            CrosshairView crosshairs,
+                                            Bitmap previewBitmap,
+                                            SavedDisplay display,
+                                            OnTempReadListener tempListener) {
+        Log.d(LOG_TAG, "updateSelectionCoordinates x,y = " + newX + "," + newY);
+
+        crosshairs.setLocation(newX, newY);
+        crosshairs.invalidate();
+
+        final int horizontalPadding = (crosshairs.getWidth() - previewBitmap.getWidth()) / 2;
+        final int verticalPadding = (crosshairs.getHeight() - previewBitmap.getHeight()) / 2;
+
+        final int imageX = newX - horizontalPadding;
+        final int imageY = newY - verticalPadding;
+
+        final Integer tempInC = getTempAt(CompareActivity.this, display.renderedImage, imageX, imageY);
+        Log.d(LOG_TAG, "temp is: " + tempInC);
+        tempListener.onTemp(tempInC);
     }
 
     private static Integer getTempAt(final Context context, final RenderedImage renderedImage,
@@ -184,7 +246,7 @@ public class CompareActivity extends Activity {
         return tempInC;
     }
 
-
+    /*
     @Override
     public boolean dispatchTouchEvent(final MotionEvent touchEvent) {
         Log.d(LOG_TAG, "dispatchTouchEvent x,y = " + touchEvent.getX() + "," + touchEvent.getY());
@@ -195,4 +257,5 @@ public class CompareActivity extends Activity {
 
         return super.dispatchTouchEvent(touchEvent);
     }
+    */
 }

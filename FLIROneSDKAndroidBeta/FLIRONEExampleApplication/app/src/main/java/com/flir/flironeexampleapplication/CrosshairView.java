@@ -72,6 +72,18 @@ public class CrosshairView extends View {
         this.y = y;
     }
 
+    public Float getLocationX() {
+        return x;
+    }
+
+    public Float getLocationY() {
+        return y;
+    }
+
+    public boolean hasLocation() {
+        return null != x && null != y;
+    }
+
     /*
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
