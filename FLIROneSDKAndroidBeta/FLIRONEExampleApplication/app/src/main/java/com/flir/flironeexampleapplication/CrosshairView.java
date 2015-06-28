@@ -6,9 +6,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class CrosshairView extends View {
+
+    private static final String LOG_TAG = CrosshairView.class.getSimpleName();
 
     private Float x;
 
@@ -68,4 +72,15 @@ public class CrosshairView extends View {
         this.y = y;
     }
 
+    /*
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.d(LOG_TAG, "dispatchTouchEvent x,y = " + event.getX() + "," + event.getY());
+
+        setLocation(event.getX(), event.getY());
+        invalidate();
+
+        return super.dispatchTouchEvent(event);
+    }
+    */
 }

@@ -1,13 +1,9 @@
 package com.flir.flironeexampleapplication;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,18 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.flir.flironesdk.Frame;
-import com.flir.flironesdk.FrameProcessor;
 import com.flir.flironesdk.RenderedImage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.EnumSet;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 /**
  * Offers options for running FLIR One in background or foreground.
- *
+ * <p/>
  * Created by lnanek on 6/27/15.
  */
 public class CompareActivity extends Activity {
@@ -49,6 +41,7 @@ public class CompareActivity extends Activity {
         setContentView(R.layout.activity_compare);
         imageView = (ImageView) findViewById(R.id.imageView);
         crosshairs = (CrosshairView) findViewById(R.id.crosshairs);
+
         temperatureReadout = (TextView) findViewById(R.id.temperatureReadout);
         diagnosis = (TextView) findViewById(R.id.diagnosis);
 
@@ -60,19 +53,81 @@ public class CompareActivity extends Activity {
 
         final SavedDisplay display = ThermalNurseApp.INSTANCE.displays.get(0);
 
-        Bitmap previewBitmap = BitmapFactory.decodeFile(display.savedFrame);
+        Log.d(LOG_TAG, "renderedImage width,height = " + display.renderedImage.width() + "," + display.renderedImage.height());
+
+        final Bitmap previewBitmap = BitmapFactory.decodeFile(display.savedFrame);
 
         imageView.setImageBitmap(previewBitmap);
+
+        crosshairs.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d(LOG_TAG, "onTouch x,y = " + event.getX() + "," + event.getY());
+
+                crosshairs.setLocation(event.getX(), event.getY());
+                crosshairs.invalidate();
+
+
+                final int horizontalPadding = (crosshairs.getWidth() - previewBitmap.getWidth()) / 2;
+                final int verticalPadding = (crosshairs.getHeight() - previewBitmap.getHeight()) / 2;
+
+                final int imageX = (int) event.getX() - horizontalPadding;
+                final int imageY = (int) event.getY() - verticalPadding;
+
+                final Integer tempInC = getTempAt(display.renderedImage, imageX, imageY);
+
+                Log.d(LOG_TAG, "temp is: " + tempInC);
+                if ( null == tempInC ) {
+                    temperatureReadout.setText("Select a point on the image");
+                } else {
+                    temperatureReadout.setText("Temperature at selected point is: " + tempInC);
+                }
+
+                return true;
+            }
+        });
     }
 
-    // TODO tap spot on image, display temperature
+    private Integer getTempAt(final RenderedImage renderedImage,
+                              final int previewImageX, final int previewImageY) {
+        Log.d(LOG_TAG, "getTempAt x,y = " + previewImageX + "," + previewImageY);
+
+        // Didn't save temps
+        if (renderedImage.imageType() != RenderedImage.ImageType.ThermalRadiometricKelvinImage) {
+            Toast.makeText(this, "Save a radiometric image type!", Toast.LENGTH_LONG).show();
+            return null;
+        }
+
+        // Preview image is 480x640, temp image is 240x320
+        final int tempImageX = previewImageX / 2;
+        final int tempImageY = previewImageY / 2;
+
+        // Out of bounds
+        if ( tempImageX < 0 || tempImageY < 0
+                || tempImageX >= renderedImage.width() || tempImageY >= renderedImage.height()) {
+            return null;
+        }
+
+        final int index = tempImageX + tempImageY * renderedImage.width();
+
+        short[] shortPixels = new short[renderedImage.pixelData().length / 2];
+
+        // Thermal data is little endian.
+        ByteBuffer.wrap(renderedImage.pixelData()).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().get(shortPixels);
+
+        int tempInC = (shortPixels[index] - 27315) / 100;
+
+        return tempInC;
+    }
+
 
     @Override
     public boolean dispatchTouchEvent(final MotionEvent touchEvent) {
-        Log.d(LOG_TAG, "dispatchTouchEvent");
+        Log.d(LOG_TAG, "dispatchTouchEvent x,y = " + touchEvent.getX() + "," + touchEvent.getY());
 
-        crosshairs.setLocation(touchEvent.getX(), touchEvent.getY());
-        crosshairs.invalidate();
+        // XXX coordinates are in terms of activity, not imageview which is smaller part of activity coordinates
+        //crosshairs.setLocation(touchEvent.getX(), touchEvent.getY());
+        //crosshairs.invalidate();
 
         return super.dispatchTouchEvent(touchEvent);
     }

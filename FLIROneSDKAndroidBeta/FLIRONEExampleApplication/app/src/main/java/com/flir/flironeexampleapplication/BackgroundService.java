@@ -33,7 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.flir.flironeexampleapplication.util.SystemUiHider;
 import com.flir.flironesdk.Device;
 import com.flir.flironesdk.Frame;
 import com.flir.flironesdk.FrameProcessor;
@@ -57,8 +56,6 @@ import java.util.Locale;
  * Created by lnanek on 6/27/15.
  */
 public class BackgroundService extends Service implements Device.Delegate, FrameProcessor.Delegate, Device.StreamDelegate, Device.PowerUpdateDelegate {
-
-    // TODO delete older image so don't fill SD card?
 
     private static final String LOG_TAG = BackgroundService.class.getSimpleName();
 

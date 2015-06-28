@@ -13,18 +13,22 @@
         android:id="@+id/temperatureReadout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="The temperature for the tapped location is 25 deg. C"
+        tools:text="The temperature for the tapped location is 25 deg. C"
         android:textColor="#FFFFFF" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="start|top"
+        >
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            />
 
         <com.flir.flironeexampleapplication.CrosshairView
             android:id="@+id/crosshairs"
