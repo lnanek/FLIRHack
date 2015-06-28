@@ -25,6 +25,10 @@
             android:name=".CompareActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"/>
+        <activity
+            android:name=".ListActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"/>
 
         <activity
             android:name=".MainActivity"

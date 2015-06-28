@@ -83,4 +83,11 @@ public class MainActivity extends Activity {
         final Intent intent = new Intent(this, CompareActivity.class);
         startActivity(intent);
     }
+
+    public void onListActivityClicked(View v){
+        Log.d(LOG_TAG, "onListActivityClicked");
+
+        final Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
+    }
 }

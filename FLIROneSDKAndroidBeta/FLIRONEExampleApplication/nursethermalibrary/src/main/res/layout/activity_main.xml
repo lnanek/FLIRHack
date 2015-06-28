@@ -44,4 +44,10 @@
         android:onClick="onCompareActivityClicked"
         android:text="Start Compare Activity" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onListActivityClicked"
+        android:text="Start List Activity" />
+
 </LinearLayout>
