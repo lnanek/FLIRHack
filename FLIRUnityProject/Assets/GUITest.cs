@@ -6,6 +6,8 @@ using System;
 
 public class GUITest : MonoBehaviour {
 
+	private bool DEBUG_CALL_ANDROID = false;
+
 	private Texture2D displayingTexture ;
 	
 	private Texture2D loadingTexture;
@@ -59,19 +61,64 @@ public class GUITest : MonoBehaviour {
 			GUI.DrawTexture(centered, displayingTexture, ScaleMode.ScaleToFit, true, imageAspect);
 		}
 
-		GUI.Box(new Rect(10,10,200,90), "Thermal Control");
+		GUI.Box(new Rect(10,10,300,130), "Thermal Control");
 		
-		if(GUI.Button(new Rect(20,40,180,20), "Background Capture")) {
-			Debug.Log("Button 1 Pressed");
+		if(GUI.Button(new Rect(20,40,280,20), "Background Capture")) {
+			Debug.Log("StartBackgroundCapture Pressed");
+			StartBackgroundCapture();
 		}
 		
-		if(GUI.Button(new Rect(20,70,180,20), "Background Capture Simulated")) {
-			Debug.Log("Button 2 Pressed");
+		if(GUI.Button(new Rect(20,70,280,20), "Background Capture Simulated")) {
+			Debug.Log("StartBackgroundCaptureSimulated Pressed");
+			StartBackgroundCaptureSimulated();
 		}
 		
-		if(GUI.Button(new Rect(20,100,180,20), "Stop Capture")) {
-			Debug.Log("Button 3 Pressed");
+		if(GUI.Button(new Rect(20,100,280,20), "Stop Capture")) {
+			Debug.Log("StopBackgroundCapture Pressed");
+			StopBackgroundCapture();
 		}
+	}
+
+	void StartBackgroundCapture() {
+		if (Application.platform != RuntimePlatform.Android || !DEBUG_CALL_ANDROID) {
+			return;
+		}
+
+		AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"); 
+		AndroidJavaObject jo = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity"); 
+
+		AndroidJNIHelper.debug = true; 
+		using (AndroidJavaClass jc = new AndroidJavaClass("com.flir.flironeexampleapplication.ThermalControl")) { 
+			jc.CallStatic("startBackgroundThermalCapture", jo); 
+		} 
+	}
+	
+	void StartBackgroundCaptureSimulated() {
+		if (Application.platform != RuntimePlatform.Android || !DEBUG_CALL_ANDROID) {
+			return;
+		}
+		
+		AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"); 
+		AndroidJavaObject jo = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity"); 
+		
+		AndroidJNIHelper.debug = true; 
+		using (AndroidJavaClass jc = new AndroidJavaClass("com.flir.flironeexampleapplication.ThermalControl")) { 
+			jc.CallStatic("startBackgroundThermalCaptureSimulated", jo); 
+		} 
+	}
+	
+	void StopBackgroundCapture() {
+		if (Application.platform != RuntimePlatform.Android || !DEBUG_CALL_ANDROID) {
+			return;
+		}
+		
+		AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"); 
+		AndroidJavaObject jo = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity"); 
+		
+		AndroidJNIHelper.debug = true; 
+		using (AndroidJavaClass jc = new AndroidJavaClass("com.flir.flironeexampleapplication.ThermalControl")) { 
+			jc.CallStatic("stopBackgroundThermalCapture", jo); 
+		} 
 	}
 
 	IEnumerator load_image_after(float waitTime) {

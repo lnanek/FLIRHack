@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal" android:orientation="horizontal"
             tools:ignore="UselessParent"
-            android:background="@color/black_overlay">
+            android:background="#000000">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,13 +74,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/streamButton"
-                style="?metaButtonBarButtonStyle"
                 android:textOff="@string/startNetStream"
                 android:textOn="@string/stopNetStream"
                 android:onClick="onNetStreamClicked"/>
 
             <Button
-                android:layout_width="51dp" style="?metaButtonBarButtonStyle"
+                android:layout_width="51dp"
                 android:layout_height="wrap_content"
                 android:text="@string/performTuning"
                 android:id="@+id/tuneButton"
@@ -95,14 +94,14 @@
                 android:layout_gravity="right"
                 android:textOff="@string/rotate_off"
                 android:textOn="@string/rotate_on"
-                style="?metaButtonBarButtonStyle" />
+                />
 
 
         </LinearLayout>
-        <FrameLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
+        <FrameLayout android:id="@+id/fullscreen_content_controls"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
+            android:background="#000000"
             tools:ignore="UselessParent"
             android:columnCount="3"
             android:rowCount="2">
@@ -143,7 +142,7 @@
                     android:dividerHeight="0dp" />
             </LinearLayout>
 
-            <ImageButton style="?metaButtonBarButtonStyle"
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton"
@@ -152,7 +151,7 @@
                 android:src="@android:drawable/ic_menu_camera"
                 android:layout_gravity="center_horizontal|bottom" />
 
-            <ToggleButton android:id="@+id/change_view_button" style="?metaButtonBarButtonStyle"
+            <ToggleButton android:id="@+id/change_view_button"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:layout_weight="0.33" android:textOff="@string/change_view"
                 android:textOn="@string/change_view_retract"
@@ -160,7 +159,7 @@
                 android:layout_gravity="bottom|left" />
 
             <Button
-                android:layout_width="wrap_content" style="?metaButtonBarButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/connectSim"
                 android:id="@+id/connect_sim_button"
