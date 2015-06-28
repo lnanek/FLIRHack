@@ -29,8 +29,9 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"/>
 
+
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:launchMode="singleTask">
@@ -40,6 +41,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+
         </activity>
 
         <service android:name="com.flir.flironeexampleapplication.BackgroundService" />

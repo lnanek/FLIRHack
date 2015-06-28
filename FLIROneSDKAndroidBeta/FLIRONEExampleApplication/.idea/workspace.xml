@@ -5,9 +5,6 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="7366a90c-014e-412c-9ff9-2d6e50430baf" name="Default" comment="" />
     <ignored path="FLIRONEExampleApplication.iws" />
@@ -46,13 +43,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14851485">
-              <caret line="2" column="47" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding>
+                <element signature="e#351#369#0" expanded="true" />
+                <element signature="e#648#666#0" expanded="true" />
+                <element signature="e#836#854#0" expanded="true" />
+                <element signature="e#986#1004#0" expanded="true" />
+                <element signature="e#1214#1232#0" expanded="true" />
+                <element signature="e#1663#1681#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_splash.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9537572">
+              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -1832,7 +1849,6 @@
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/java/com/flir/flironeexampleapplication/BackgroundService.java" />
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/res/layout/activity_list.xml" />
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/java/com/flir/flironeexampleapplication/ListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/res/layout/activity_preview.xml" />
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/java/com/flir/flironeexampleapplication/CompareActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_compare.xml" />
@@ -1846,6 +1862,9 @@
         <option value="$PROJECT_DIR$/nursethermalibrary/build.gradle" />
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/java/com/flir/flironeexampleapplication/ForegroundNotification.java" />
         <option value="$PROJECT_DIR$/nursethermalibrary/src/main/java/com/flir/flironeexampleapplication/FrameSaver.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/flir/flironeexampleapplication/SplashActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -2301,6 +2320,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FLIRONEExampleApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FLIRONEExampleApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2372,11 +2421,11 @@
       <recent name="com.flir.flironeexampleapplication" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/nursethermalibrary/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/nursethermalibrary/src/main/res/layout-land" />
       <recent name="$PROJECT_DIR$/nursethermalibrary/libs" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/flir/flironeexampleapplication" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -2847,10 +2896,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14851485">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#351#369#0" expanded="true" />
+            <element signature="e#648#666#0" expanded="true" />
+            <element signature="e#836#854#0" expanded="true" />
+            <element signature="e#986#1004#0" expanded="true" />
+            <element signature="e#1214#1232#0" expanded="true" />
+            <element signature="e#1663#1681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/flir/flironeexampleapplication/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6200318">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#711#983#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9537572">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>
