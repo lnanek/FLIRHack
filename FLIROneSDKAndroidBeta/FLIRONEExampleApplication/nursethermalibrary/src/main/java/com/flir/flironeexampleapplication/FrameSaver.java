@@ -3,6 +3,7 @@ package com.flir.flironeexampleapplication;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,9 +25,9 @@ public class FrameSaver {
 
 
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ssZ", Locale.getDefault());
-        String formatedDate = sdf.format(new Date());
-        String fileName = "FLIROne-" + formatedDate + ".jpg";
+
+        String fileName = "FLIROne-" + lPadZero(SystemClock.elapsedRealtimeNanos(), 19) + ".jpg";
+
         String lastSavedPath = path+ "/" + fileName;
 
         try{
@@ -41,6 +42,49 @@ public class FrameSaver {
 
         return lastSavedPath;
 
+    }
+
+
+    /**
+     * @param in The long value
+     * @param fill The number of digits to fill
+     * @return The given value left padded with the given number of digits
+     */
+    public static String lPadZero(long in, int fill){
+
+        boolean negative = false;
+        long value, len = 0;
+
+        if(in >= 0){
+            value = in;
+        } else {
+            negative = true;
+            value = - in;
+            in = - in;
+            len ++;
+        }
+
+        if(value == 0){
+            len = 1;
+        } else{
+            for(; value != 0; len ++){
+                value /= 10;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if(negative){
+            sb.append('-');
+        }
+
+        for(int i = fill; i > len; i--){
+            sb.append('0');
+        }
+
+        sb.append(in);
+
+        return sb.toString();
     }
 
 }
