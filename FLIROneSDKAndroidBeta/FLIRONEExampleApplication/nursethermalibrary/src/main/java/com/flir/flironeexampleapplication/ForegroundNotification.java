@@ -3,7 +3,6 @@ package com.flir.flironeexampleapplication;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.support.v4.app.NotificationCompat;
 import com.flir.flironeexampleapplication.nursethermalibrary.R;
 
 /**
@@ -19,13 +18,13 @@ public class ForegroundNotification {
 
     public static synchronized Notification show(final Context context) {
         if (null == notification) {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                    .setContentTitle("FLIR SDK")
-                    .setContentText("Streaming thermal images")
-                    .setSmallIcon(R.drawable.ic_launcher)
-                    .setOngoing(true);
 
-            notification = builder.build();
+            CharSequence tickerText = "Nurse Therma";
+            long when = System.currentTimeMillis();
+            notification = new Notification(R.drawable.ic_launcher, tickerText, when);
+            notification.defaults |= Notification.DEFAULT_SOUND|Notification.DEFAULT_VIBRATE|Notification.DEFAULT_LIGHTS;;
+            notification.setLatestEventInfo(context, "Nurse Therma", "Streaming thermal images", null);
+
         }
 
         NotificationManager notifications = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

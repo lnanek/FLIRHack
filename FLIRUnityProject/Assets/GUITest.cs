@@ -6,7 +6,7 @@ using System;
 
 public class GUITest : MonoBehaviour {
 
-	private bool DEBUG_CALL_ANDROID = false;
+	private bool DEBUG_CALL_ANDROID = true;
 
 	private Texture2D displayingTexture ;
 	
@@ -61,19 +61,19 @@ public class GUITest : MonoBehaviour {
 			GUI.DrawTexture(centered, displayingTexture, ScaleMode.ScaleToFit, true, imageAspect);
 		}
 
-		GUI.Box(new Rect(10,10,300,130), "Thermal Control");
+		GUI.Box(new Rect(10,10,500,230), "Thermal Control");
 		
-		if(GUI.Button(new Rect(20,40,280,20), "Background Capture")) {
+		if(GUI.Button(new Rect(20,80,480,40), "Background Capture")) {
 			Debug.Log("StartBackgroundCapture Pressed");
 			StartBackgroundCapture();
 		}
 		
-		if(GUI.Button(new Rect(20,70,280,20), "Background Capture Simulated")) {
+		if(GUI.Button(new Rect(20,140,480,40), "Background Capture Simulated")) {
 			Debug.Log("StartBackgroundCaptureSimulated Pressed");
 			StartBackgroundCaptureSimulated();
 		}
 		
-		if(GUI.Button(new Rect(20,100,280,20), "Stop Capture")) {
+		if(GUI.Button(new Rect(20,200,480,40), "Stop Capture")) {
 			Debug.Log("StopBackgroundCapture Pressed");
 			StopBackgroundCapture();
 		}

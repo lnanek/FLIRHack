@@ -19,6 +19,16 @@ adb install UnityAndroidApp.apk
 6) Run Unity App  
   
 7) Thermal images are displayed as loaded
+
+Compilation:  
+  
+To compile on Unity, you have to update the Unity AndroidManifest.xml located here:  
+/Applications/Unity/Unity.app/Contents/PlaybackEngines/AndroidPlayer/AndroidManifest.xml  
+
+Add this line:  
+<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="21" />  
+   
+Inside the manifest tag.  
   
 ****
   

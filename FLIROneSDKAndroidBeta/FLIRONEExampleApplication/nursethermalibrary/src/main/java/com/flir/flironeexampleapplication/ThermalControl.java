@@ -16,7 +16,7 @@ public class ThermalControl {
 
     private static final String LOG_TAG = ThermalControl.class.getSimpleName();
 
-    private static final String SIMULATE_PREF_KEY = MainActivity.class.getName() + ".SIMULATE_PREF_KEY";
+    private static final String SIMULATE_PREF_KEY = ThermalControl.class.getName() + ".SIMULATE_PREF_KEY";
 
     public static void startBackgroundThermalCapture(final Context context){
         Log.d(LOG_TAG, "startBackgroundThermalCapture");

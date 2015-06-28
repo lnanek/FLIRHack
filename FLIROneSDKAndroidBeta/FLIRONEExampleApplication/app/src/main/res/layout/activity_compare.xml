@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/topView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    android:keepScreenOn="true"
+    android:orientation="vertical"
+    android:touchscreenBlocksFocus="false"
+    tools:context=".CompareActivity">
+
+    <TextView
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:id="@+id/temperatureReadout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="The temperature for the tapped location is 25 deg. C"
+        android:textColor="#FFFFFF" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:gravity="start|top"
+        >
+
+        <ImageView
+            android:id="@+id/itemAPreviewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            tools:src="@drawable/ic_launcher"
+            />
+
+        <com.flir.flironeexampleapplication.CrosshairView
+            android:id="@+id/itemACrosshairs"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:gravity="start|top"
+        >
+
+        <ImageView
+            android:id="@+id/itemBPreviewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            tools:src="@drawable/ic_launcher"
+            />
+
+        <com.flir.flironeexampleapplication.CrosshairView
+            android:id="@+id/itemBCrosshairs"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+    </FrameLayout>
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Diagnosis:"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="possible tumor vascularization/infection! Have doctor check it out!"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
