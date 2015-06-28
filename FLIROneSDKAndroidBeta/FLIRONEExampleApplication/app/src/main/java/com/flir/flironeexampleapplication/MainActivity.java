@@ -75,4 +75,11 @@ public class MainActivity extends Activity {
         final Intent intent = new Intent(this, PreviewActivity.class);
         startActivity(intent);
     }
+
+    public void onCompareActivityClicked(View v){
+        Log.d(LOG_TAG, "onCompareActivityClicked");
+
+        final Intent intent = new Intent(this, CompareActivity.class);
+        startActivity(intent);
+    }
 }

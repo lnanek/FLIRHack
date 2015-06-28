@@ -409,7 +409,7 @@ public class PreviewActivity extends Activity implements Device.Delegate, FrameP
                             lastSavedPath = path+ "/" + fileName;
                             renderedImage.getFrame().save(lastSavedPath, RenderedImage.Palette.Iron, RenderedImage.ImageType.BlendedMSXRGBA8888Image);
 
-                            Log.d(LOG_TAG, "***Lance*** thermal image saved to path: " + lastSavedPath);
+                            Log.d(LOG_TAG, "***Lance*** thermal data saved to path: " + lastSavedPath);
                             Toast.makeText(PreviewActivity.this, "Saved to: " + lastSavedPath, Toast.LENGTH_LONG).show();
 
                             MediaScannerConnection.scanFile(context,

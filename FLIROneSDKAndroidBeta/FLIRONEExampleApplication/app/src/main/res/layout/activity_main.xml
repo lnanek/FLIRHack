@@ -38,5 +38,10 @@
         android:onClick="onForegroundClicked"
         android:text="Foreground Demo" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCompareActivityClicked"
+        android:text="Start Compare Activity" />
 
 </LinearLayout>
