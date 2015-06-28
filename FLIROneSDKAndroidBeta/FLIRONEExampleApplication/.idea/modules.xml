@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FLIRONEExampleApplication.iml" filepath="$PROJECT_DIR$/FLIRONEExampleApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nursethermalibrary/nursethermalibrary.iml" filepath="$PROJECT_DIR$/nursethermalibrary/nursethermalibrary.iml" />
     </modules>
   </component>
 </project>

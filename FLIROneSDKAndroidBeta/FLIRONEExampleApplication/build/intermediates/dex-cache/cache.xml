@@ -2,25 +2,18 @@
 <items version="2" >
 
     <item
+        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/FLIRONEExampleApplication/nursethermalibrary/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e7e2b52d04187a12e06db84514cc30aa0f00c5b7">
+        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-11597d5458f5e11971c26c3f370cc8ef665074be.jar" />
+    </item>
+    <item
         jar="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/flironesdk/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a916d0f07e2d1043c5460c6fbfe80f1db9ab8213">
         <dex dex="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-a5eca187efe8d02a1c0a377c8a124f689bb39bb1.jar" />
-    </item>
-    <item
-        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-d294f5ee2fd36e6149b9267d17e0cdd9611cb231.jar" />
-    </item>
-    <item
-        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-71f9bd929652d8cbffaefd677c9d02036615ee0a.jar" />
     </item>
     <item
         jar="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
@@ -30,11 +23,11 @@
         <dex dex="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-bd766abc2051d189bfa44008a917440163d2cb4d.jar" />
     </item>
     <item
-        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-0a02e5108bac8ed023a71ed62e2ea4cc06d2a86c.jar" />
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-2984bd61acc7356df0a560b7b0f3de6c556f79cd.jar" />
     </item>
     <item
         jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/flironesdk/classes.jar"
@@ -42,6 +35,13 @@
         revision="21.1.2"
         sha1="a916d0f07e2d1043c5460c6fbfe80f1db9ab8213">
         <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-1e7c5d1ea5a3e34d17c1935ccc127eed6f883fe6.jar" />
+    </item>
+    <item
+        jar="/Users/Shared/android-sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-a6f8f21511eb5a7f3cb85c298a46d94ccb0b941c.jar" />
     </item>
     <item
         jar="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
@@ -58,11 +58,25 @@
         <dex dex="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-beb278cf0790f7ae1048315ff391f8396a7e8d1d.jar" />
     </item>
     <item
+        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-1f5ab70ae45cd6281cd2742502552c6caa704f4f.jar" />
+    </item>
+    <item
         jar="/Users/Shared/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
         <dex dex="/Users/lnanek/Desktop/FLIRAndroid/FLIROneSDKBundle/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-9b01276b2620f29c95d036546db715f7b2898e3b.jar" />
+    </item>
+    <item
+        jar="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/lnanek/Desktop/FLIRHack/FLIROneSDKAndroidBeta/FLIRONEExampleApplication/app/build/intermediates/pre-dexed/debug/classes-71f88f746c829f18ae1a200d5799d47b967acbca.jar" />
     </item>
 
 </items>
