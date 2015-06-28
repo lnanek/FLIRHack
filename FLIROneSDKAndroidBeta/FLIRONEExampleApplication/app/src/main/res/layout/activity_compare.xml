@@ -24,14 +24,38 @@
         >
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/itemAPreviewImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="center"
+            tools:src="@drawable/ic_launcher"
             />
 
         <com.flir.flironeexampleapplication.CrosshairView
-            android:id="@+id/crosshairs"
+            android:id="@+id/itemACrosshairs"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:gravity="start|top"
+        >
+
+        <ImageView
+            android:id="@+id/itemBPreviewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            tools:src="@drawable/ic_launcher"
+            />
+
+        <com.flir.flironeexampleapplication.CrosshairView
+            android:id="@+id/itemBCrosshairs"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
@@ -41,7 +65,7 @@
         android:id="@+id/diagnosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Diagnosis: possible tumor vascularization/infection! Have doctor check it out!"
+        tools:text="Diagnosis: possible tumor vascularization/infection! Have doctor check it out!"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>
