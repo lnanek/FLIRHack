@@ -170,9 +170,9 @@ public class CompareActivity extends Activity {
             displayString += "Delta T: " + tempDifference + "\u00B0C  ";
             tempText.setText(displayString);
 
-            if (tempDifference > 5) {
+            if (tempDifference > 2) {
                 diagnosisText.setText("possible tumor blood flow or infection. See Doctor!");
-            } else if (tempDifference < -5) {
+            } else if (tempDifference < -2) {
                 diagnosisText.setText("possible poor blood flow or calcification. See Doctor!");
             } else {
                 diagnosisText.setText("situation normal!");
