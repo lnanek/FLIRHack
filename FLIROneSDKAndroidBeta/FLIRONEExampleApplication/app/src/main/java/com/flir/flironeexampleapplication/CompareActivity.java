@@ -9,8 +9,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.flir.flironesdk.Frame;
@@ -33,6 +35,11 @@ public class CompareActivity extends Activity {
 
     private ImageView imageView;
 
+    private CrosshairView crosshairs;
+
+    private TextView temperatureReadout;
+
+    private TextView diagnosis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +48,13 @@ public class CompareActivity extends Activity {
 
         setContentView(R.layout.activity_compare);
         imageView = (ImageView) findViewById(R.id.imageView);
+        crosshairs = (CrosshairView) findViewById(R.id.crosshairs);
+        temperatureReadout = (TextView) findViewById(R.id.temperatureReadout);
+        diagnosis = (TextView) findViewById(R.id.diagnosis);
 
         if (ThermalNurseApp.INSTANCE.displays.isEmpty()) {
             Toast.makeText(this, "Save a thermal image first!", Toast.LENGTH_LONG).show();
-            finish();
+            //finish();
             return;
         }
 
@@ -57,4 +67,13 @@ public class CompareActivity extends Activity {
 
     // TODO tap spot on image, display temperature
 
+    @Override
+    public boolean dispatchTouchEvent(final MotionEvent touchEvent) {
+        Log.d(LOG_TAG, "dispatchTouchEvent");
+
+        crosshairs.setLocation(touchEvent.getX(), touchEvent.getY());
+        crosshairs.invalidate();
+
+        return super.dispatchTouchEvent(touchEvent);
+    }
 }

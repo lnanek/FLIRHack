@@ -13,23 +13,31 @@
         android:id="@+id/temperatureReadout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
         android:text="The temperature for the tapped location is 25 deg. C"
-        />
+        android:textColor="#FFFFFF" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.flir.flironeexampleapplication.CrosshairView
+            android:id="@+id/crosshairs"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/diagnosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
         android:text="Diagnosis: possible tumor vascularization/infection! Have doctor check it out!"
-        />
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
