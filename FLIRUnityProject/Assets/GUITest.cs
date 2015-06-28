@@ -59,16 +59,18 @@ public class GUITest : MonoBehaviour {
 			GUI.DrawTexture(centered, displayingTexture, ScaleMode.ScaleToFit, true, imageAspect);
 		}
 
-		// Make a background box
-		GUI.Box(new Rect(10,10,100,90), "Test Label");
+		GUI.Box(new Rect(10,10,200,90), "Thermal Control");
 		
-		if(GUI.Button(new Rect(20,40,80,20), "Button 1")) {
+		if(GUI.Button(new Rect(20,40,180,20), "Background Capture")) {
 			Debug.Log("Button 1 Pressed");
 		}
 		
-		// Make the second button.
-		if(GUI.Button(new Rect(20,70,80,20), "Button 2")) {
+		if(GUI.Button(new Rect(20,70,180,20), "Background Capture Simulated")) {
 			Debug.Log("Button 2 Pressed");
+		}
+		
+		if(GUI.Button(new Rect(20,100,180,20), "Stop Capture")) {
+			Debug.Log("Button 3 Pressed");
 		}
 	}
 
