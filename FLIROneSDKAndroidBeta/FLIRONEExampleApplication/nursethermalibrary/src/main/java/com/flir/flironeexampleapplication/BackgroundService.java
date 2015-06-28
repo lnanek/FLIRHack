@@ -100,7 +100,7 @@ public class BackgroundService extends Service implements Device.Delegate, Frame
 
         // Fake pressing simulate button
 
-        if (MainActivity.getSimulatePref(this)) {
+        if (ThermalControl.getSimulatePref(this)) {
             onConnectSimClicked(null);
         }
 

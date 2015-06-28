@@ -19,21 +19,6 @@ public class MainActivity extends Activity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private static final String SIMULATE_PREF_KEY = MainActivity.class.getName() + ".SIMULATE_PREF_KEY";
-
-    public static void setSimulatePref(final Context context, final boolean value) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        final SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean(SIMULATE_PREF_KEY, value);
-        editor.commit();
-    }
-
-
-    public static boolean getSimulatePref(final Context context) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean(SIMULATE_PREF_KEY, false);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(LOG_TAG, "onCreate");
@@ -42,32 +27,22 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    private Intent getServiceIntent() {
-        final Intent intent = new Intent(this, BackgroundService.class);
-        return intent;
-    }
 
     public void onBackgroundClicked(View v){
         Log.d(LOG_TAG, "onBackgroundClicked");
-
-        setSimulatePref(this, false);
-
-        startService(getServiceIntent());
+        ThermalControl.startBackgroundThermalCapture(this);
     }
 
     public void onStopBackgroundClicked(View v){
         Log.d(LOG_TAG, "onStopBackgroundClicked");
 
-        stopService(getServiceIntent());
-        ForegroundNotification.hide(this);
+        ThermalControl.stopBackgroundThermalCapture(this);
     }
 
     public void onBackgroundSimulatedClicked(View v){
         Log.d(LOG_TAG, "onBackgroundSimulatedClicked");
 
-        setSimulatePref(this, true);
-
-        startService(getServiceIntent());
+        ThermalControl.startBackgroundThermalCaptureSimulated(this);
     }
 
     public void onForegroundClicked(View v){

@@ -2,6 +2,7 @@ package com.flir.flironeexampleapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -25,8 +26,19 @@ import com.flir.flironeexampleapplication.nursethermalibrary.R;
  */
 public class CompareActivity extends Activity {
 
+    private static final String ITEM_A_INDEX_EXTRA = CompareActivity.class.getName() + ".ITEM_A_INDEX_EXTRA";
+
+    private static final String ITEM_B_INDEX_EXTRA = CompareActivity.class.getName() + ".ITEM_B_INDEX_EXTRA";
+
     private static interface OnTempReadListener {
         void onTemp(final Integer tempInC);
+    }
+
+    public static void startFor(final Context context, final int displayIndexA, final int displayIndexB) {
+        final Intent intent = new Intent(context, CompareActivity.class);
+        intent.putExtra(ITEM_A_INDEX_EXTRA, displayIndexA);
+        intent.putExtra(ITEM_B_INDEX_EXTRA, displayIndexB);
+        context.startActivity(intent);
     }
 
     private static final String LOG_TAG = CompareActivity.class.getSimpleName();
@@ -91,13 +103,26 @@ public class CompareActivity extends Activity {
             return;
         }
 
-        // TODO pick compare indexes in a list
-        final int itemAIndex = 0;
-        itemADisplay = ThermalNurseApp.INSTANCE.displays.get(itemAIndex);
-        itemAPreviewBitmap = BitmapFactory.decodeFile(itemADisplay.savedFrame);
+        int itemAIndex = 0;
+        if (null != getIntent()
+                && null != getIntent().getExtras()
+                && getIntent().getExtras().containsKey(ITEM_A_INDEX_EXTRA)) {
 
-        final int itemBIndex = ThermalNurseApp.INSTANCE.displays.size() > 1 ? 1 : 0;
+            itemAIndex = getIntent().getExtras().getInt(ITEM_A_INDEX_EXTRA);
+        }
+
+        int itemBIndex = ThermalNurseApp.INSTANCE.displays.size() > 1 ? 1 : 0;
+        if (null != getIntent()
+                && null != getIntent().getExtras()
+                && getIntent().getExtras().containsKey(ITEM_B_INDEX_EXTRA)) {
+
+            itemBIndex = getIntent().getExtras().getInt(ITEM_B_INDEX_EXTRA);
+        }
+
+        itemADisplay = ThermalNurseApp.INSTANCE.displays.get(itemAIndex);
         itemBDisplay = ThermalNurseApp.INSTANCE.displays.get(itemBIndex);
+
+        itemAPreviewBitmap = BitmapFactory.decodeFile(itemADisplay.savedFrame);
         itemBPreviewBitmap = BitmapFactory.decodeFile(itemBDisplay.savedFrame);
 
         // To help comparisons, when crosshairs A is dragged, move both

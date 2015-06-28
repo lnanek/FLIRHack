@@ -23,4 +23,16 @@
         android:scaleType="center"
         tools:src="@drawable/ic_launcher" />
 
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
+    <Button
+        android:id="@+id/select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Compare" />
+
 </LinearLayout>

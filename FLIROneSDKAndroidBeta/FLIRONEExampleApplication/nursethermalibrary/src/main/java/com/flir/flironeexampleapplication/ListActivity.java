@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +34,8 @@ public class ListActivity extends Activity {
 
     private Handler bgHandler;
 
+    private Integer selectedDisplayIndex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(LOG_TAG, "onCreate");
@@ -51,6 +54,14 @@ public class ListActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
+        updateDisplay();
+
+    }
+
+    private void updateDisplay() {
+
+        selectedDisplayIndex = null;
+
         contents.removeAllViews();
 
         if (ThermalNurseApp.INSTANCE.displays.isEmpty()) {
@@ -58,6 +69,7 @@ public class ListActivity extends Activity {
             return;
         }
 
+        int index = 0;
         for(final SavedDisplay display : ThermalNurseApp.INSTANCE.displays) {
 
             final ViewGroup root = (ViewGroup) getLayoutInflater().inflate(R.layout.activity_list_item, null);
@@ -72,13 +84,48 @@ public class ListActivity extends Activity {
                 @Override
                 public void run() {
                     final Bitmap bitmap = BitmapFactory.decodeFile(display.savedFrame);
-                    image.setImageBitmap(bitmap);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            image.setImageBitmap(bitmap);
+                        }
+                    });
+                }
+            });
+
+            final Button delete = (Button) root.findViewById(R.id.delete);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ThermalNurseApp.INSTANCE.displays.remove(display);
+                    updateDisplay();
+                }
+            });
+            final Button select = (Button) root.findViewById(R.id.select);
+            final int currentIndex = index;
+            select.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if ( null == selectedDisplayIndex ) {
+                        selectedDisplayIndex = currentIndex;
+                        label.setText("**Selected** Taken at: " + display.created);
+                        select.setEnabled(false);
+                        return;
+                    }
+
+                    if (selectedDisplayIndex.equals(currentIndex)) {
+                        return;
+                    }
+
+                    CompareActivity.startFor(ListActivity.this, selectedDisplayIndex, currentIndex);
                 }
             });
 
             contents.addView(root);
-        }
 
-        // TODO tap to pick items to compare
+            index++;
+        }
     }
 }
