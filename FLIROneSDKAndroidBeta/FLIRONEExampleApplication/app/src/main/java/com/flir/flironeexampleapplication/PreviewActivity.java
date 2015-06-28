@@ -399,33 +399,14 @@ public class PreviewActivity extends Activity implements Device.Delegate, FrameP
             if (this.imageCaptureRequested) {
                 imageCaptureRequested = false;
                 final Context context = this;
+
                 new Thread(new Runnable() {
                     public void run() {
-                        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ssZ", Locale.getDefault());
-                        String formatedDate = sdf.format(new Date());
-                        String fileName = "FLIROne-" + formatedDate + ".jpg";
-                        try{
-                            lastSavedPath = path+ "/" + fileName;
-                            renderedImage.getFrame().save(lastSavedPath, RenderedImage.Palette.Iron, RenderedImage.ImageType.BlendedMSXRGBA8888Image);
 
-                            Log.d(LOG_TAG, "***Lance*** thermal data saved to path: " + lastSavedPath);
-                            Toast.makeText(PreviewActivity.this, "Saved to: " + lastSavedPath, Toast.LENGTH_LONG).show();
+                        lastSavedPath = FrameSaver.saveFrame(PreviewActivity.this, renderedImage.getFrame());
 
-                            MediaScannerConnection.scanFile(context,
-                                    new String[]{path + "/" + fileName}, null,
-                                    new MediaScannerConnection.OnScanCompletedListener() {
-                                        @Override
-                                        public void onScanCompleted(String path, Uri uri) {
-                                            Log.i("ExternalStorage", "Scanned " + path + ":");
-                                            Log.i("ExternalStorage", "-> uri=" + uri);
-                                        }
+                        ThermalNurseApp.INSTANCE.saveDisplay(renderedImage, lastSavedPath);
 
-                                    });
-
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

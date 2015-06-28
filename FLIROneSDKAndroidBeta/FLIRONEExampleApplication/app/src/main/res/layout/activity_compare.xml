@@ -9,10 +9,27 @@
     android:touchscreenBlocksFocus="false"
     tools:context=".CompareActivity">
 
+    <TextView
+        android:id="@+id/temperatureReadout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="The temperature for the tapped location is 25 deg. C"
+        />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="Diagnosis: possible tumor vascularization/infection! Have doctor check it out!"
         />
 
 </LinearLayout>

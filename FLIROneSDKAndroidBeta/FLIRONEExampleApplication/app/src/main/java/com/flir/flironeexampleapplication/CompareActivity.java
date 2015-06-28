@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -29,20 +31,8 @@ public class CompareActivity extends Activity {
 
     private static final String LOG_TAG = CompareActivity.class.getSimpleName();
 
-    private static final String FRAME_FILE_PATH = "/sdcard/normal_hand.jpg";
-
     private ImageView imageView;
 
-    private FrameProcessor frameProcessor;
-
-    private FrameProcessor.Delegate frameReceiver = new FrameProcessor.Delegate() {
-        @Override
-        public void onFrameProcessed(RenderedImage renderedImage) {
-            Log.d(LOG_TAG, "onFrameProcessed");
-
-            Toast.makeText(CompareActivity.this, "yay", Toast.LENGTH_LONG);
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,35 +42,19 @@ public class CompareActivity extends Activity {
         setContentView(R.layout.activity_compare);
         imageView = (ImageView) findViewById(R.id.imageView);
 
-        final Frame frame;
-        //try {
-            final File file = new File(FRAME_FILE_PATH);
+        if (ThermalNurseApp.INSTANCE.displays.isEmpty()) {
+            Toast.makeText(this, "Save a thermal image first!", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
-            Log.d(LOG_TAG, "file exists: " + file.exists());
-            Log.d(LOG_TAG, "file size: " + file.length());
+        final SavedDisplay display = ThermalNurseApp.INSTANCE.displays.get(0);
 
-            // XXX crashes
-            //final FileInputStream fileInputStream = new FileInputStream(file);
-            //frame = Frame.load(fileInputStream);
+        Bitmap previewBitmap = BitmapFactory.decodeFile(display.savedFrame);
 
-            frame = new Frame(file);
-
-        //} catch(IOException e) {
-        //    Log.e(LOG_TAG, "Error loading frame", e);
-        //    throw new RuntimeException(e);
-        //}
-
-        Log.d(LOG_TAG, "loaded frame: " + frame);
-
-        frameProcessor = new FrameProcessor(this, frameReceiver,
-                EnumSet.of(RenderedImage.ImageType.ThermalRadiometricKelvinImage));
-
-        frameProcessor.setImagePalette(RenderedImage.Palette.Iron);
-
-        frameProcessor.processFrame(frame);
-
+        imageView.setImageBitmap(previewBitmap);
     }
 
-
+    // TODO tap spot on image, display temperature
 
 }
